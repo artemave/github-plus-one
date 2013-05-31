@@ -1,1 +1,1 @@
-Google Chrome extension that upvoting for github issues and pull requests.
+Google Chrome extension for upvoting github issues and pull requests.
