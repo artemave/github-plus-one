@@ -1,18 +1,21 @@
 path = window.location.pathname
+button = $('<a>', class: 'button minibutton primary bigger', style: "margin-left:10px")
 
-if (path.match r/issues\/\d+/)
-  upvote button = $('<a>', class: 'button minibutton primary bigger', style: "margin-left:10px").text '+1'
-  upvote button.on 'click'
+if (path.match r/issues|pull\/\d+/)
+  number of votes = $('.comment-body p').filter
+    $(this).text().match r/\+\d/
+  .length || 1
+
+  button.text "+#(number of votes)".on 'click'
     $ 'textarea[name="comment[body]"]'.text '+1'
     $ 'button[type=submit]:contains("Comment"):last'.click()
     $ 'textarea[name="comment[body]"]'.text ''
 
-  $ 'h2.discussion-topic-title'.append(upvote button)
-else if (path.match r/issues$/)
-  hottest menu item container = $('<a>', class: 'select-menu-item js-navigation-open js-navigation-item')
-  selected check              = $('<span>', class: 'select-menu-item-icon octicon octicon-check')
-  item text                   = $('<span>', class: 'select-menu-item-text js-select-button-text').text 'Hottest'
+    button.text "+#(number of votes + 1)"
 
-  hottest sort option = hottest menu item container.append(selected check).append(item text)
+  $ 'h2.discussion-topic-title'.append(button)
+/*else if (path.match r/issues$/)*/
+  /*button.css 'background-color' 'red'.text 'Hotness!'.on 'click'*/
+  /*  console.log 'hellom'*/
 
-  $ '.js-issues-sort .select-menu-modal'.append(hottest sort option)
+  /*$ '.issues-list-options'.append(button)*/
