@@ -7,15 +7,21 @@ if (path.match r/issues|pull\/\d+/)
   .length || 1
 
   button.text "+#(number of votes)".on 'click'
-    $ 'textarea[name="comment[body]"]'.text '+1'
-    $ 'button[type=submit]:contains("Comment"):last'.click()
-    $ 'textarea[name="comment[body]"]'.text ''
+    current user has not voted yet =
+      current user = $('#user-links a.name').text().trim()
+      r = @new RegExp(current user)
 
-    button.text "+#(number of votes + 1)"
+      $('a.comment-header-author:visible').filter
+        r.test($(this).text())
+      .length == 0
+
+    if (current user has not voted yet)
+      $ 'textarea[name="comment[body]"]'.text '+1'
+      $ 'button[type=submit]:contains("Comment"):last'.click()
+      $ 'textarea[name="comment[body]"]'.text ''
+
+      button.text "+#(number of votes + 1)"
+    else
+      console.log 'already voted'
 
   $ 'h2.discussion-topic-title'.append(button)
-/*else if (path.match r/issues$/)*/
-  /*button.css 'background-color' 'red'.text 'Hotness!'.on 'click'*/
-  /*  console.log 'hellom'*/
-
-  /*$ '.issues-list-options'.append(button)*/
