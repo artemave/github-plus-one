@@ -1,5 +1,7 @@
 path = window.location.pathname
-button = $('<a>', class: 'button minibutton primary bigger', style: "margin-left:10px")
+style = "margin-left:10px;
+        background:url('#(chrome.runtime.getURL('rainbow.gif'))') top left;color:white;"
+button = $('<a>', class: 'button minibutton', style: (style))
 
 if (path.match r/issues|pull\/\d+/)
   number of votes = $('.comment-body p').filter
