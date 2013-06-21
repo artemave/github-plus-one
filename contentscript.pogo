@@ -13,8 +13,11 @@ if (path.match r/issues|pull\/\d+/)
     current user = $('#user-links a.name').text().trim()
     r = @new RegExp(current user)
 
-    $('a.comment-header-author:visible').filter
-      r.test($(this).text())
+    user comments = $('.comment[id|="issuecomment"]').filter
+      r.test($(this).find('a.comment-header-author').text())
+
+    user comments.filter
+      $(this).text().match r/\+\d/
     .length > 0
 
   disable button () =

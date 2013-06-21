@@ -1,7 +1,7 @@
 {
   "name": "GitHub +1",
   "manifest_version": 2,
-  "version": "0.2",
+  "version": "0.3",
   "description": "+1 GitHub issues/pull requests",
   "icons": {
     "16": "github_g16.png",
