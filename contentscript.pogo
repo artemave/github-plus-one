@@ -2,7 +2,9 @@ path = window.location.pathname
 
 if (path.match r/issues|pull\/\d+/)
   style = "margin-left:10px;
-    background:url('#(chrome.runtime.getURL('rainbow.gif'))') top left;color:white;"
+    background:url('#(chrome.runtime.getURL('rainbow.gif'))') top left;color:white;
+    font-weight:normal;text-shadow:none;"
+
   button = $('<a>', id: "plus_one_button", class: 'button minibutton', style: (style))
 
   number of votes = $('.comment-body p').filter
