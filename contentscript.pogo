@@ -8,7 +8,8 @@ if (path.match r/issues|pull\/\d+/)
   button = $('<a>', id: "plus_one_button", class: 'button minibutton', style: (style))
 
   number of votes = $('.comment-body p').filter
-    $(this).text().match r/\+\d/
+    zis = $(this)
+    zis.text().match r/\+\d/ || zis.find('img.emoji[src$="+1.png"]').length
   .length || 1
 
   current user has already voted =
