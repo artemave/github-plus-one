@@ -37,7 +37,8 @@ if (path.match r/issues|pull\/\d+/)
     $ 'textarea[name="comment[body]"]'.text '+1'
     $ 'button[type=submit]:contains("Comment"):last'.click()
     $ 'textarea[name="comment[body]"]'.text ''
-    button.text "+#(number of votes + 1)"
+    n = if (number of votes == 1) @{0} else @{1}
+    button.text "+#(n + 1)"
     disable button()
 
   $ 'h2.discussion-topic-title'.append(button)
