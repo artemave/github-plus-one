@@ -10,7 +10,7 @@ if (path.match r/issues|pull\/\d+/)
   number of votes = $('.comment-body p').filter
     zis = $(this)
     zis.text().match r/\+\d/ || zis.find('img.emoji[src$="+1.png"]').length
-  .length || 1
+  .length
 
   current user has already voted =
     current user = $('#user-links a.name').text().trim()
@@ -33,12 +33,11 @@ if (path.match r/issues|pull\/\d+/)
       false
     .append to 'body'
 
-  button.text "+#(number of votes)".on 'click'
+  button.text "+#(number of votes || 1)".on 'click'
     $ 'textarea[name="comment[body]"]'.text '+1'
     $ 'button[type=submit]:contains("Comment"):last'.click()
     $ 'textarea[name="comment[body]"]'.text ''
-    n = if (number of votes == 1) @{0} else @{1}
-    button.text "+#(n + 1)"
+    button.text "+#(number of votes + 1)"
     disable button()
 
   $ 'h2.discussion-topic-title'.append(button)
