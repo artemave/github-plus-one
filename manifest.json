@@ -10,7 +10,7 @@
   },
   "content_scripts": [{
     "matches": ["https://github.com/*"],
-    "js": ["jquery.js", "contentscript.js"]
+    "js": ["zepto.min.js", "zepto-extras.js", "contentscript.js"]
   }],
   "web_accessible_resources": ["rainbow.gif"]
 }

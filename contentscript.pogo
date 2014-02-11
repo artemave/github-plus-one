@@ -1,7 +1,7 @@
 path = window.location.pathname
 
 if (path.match r/issues|pull\/\d+/)
-  style = "margin-left:10px;
+  style = "margin-right:10px;
     background:url('#(chrome.runtime.getURL('rainbow.gif'))') top left;color:white;
     font-weight:normal;text-shadow:none;"
 
@@ -35,7 +35,7 @@ if (path.match r/issues|pull\/\d+/)
 
   button.text "+#(number of votes || 1)".on 'click'
     $ 'textarea[name="comment[body]"]'.text '+1'
-    $ 'button[type=submit]:contains("Comment"):last'.click()
+    $ 'button[type=submit]:contains("Comment")'.last().click()
     $ 'textarea[name="comment[body]"]'.text ''
     button.text "+#(number of votes + 1)"
     disable button()
