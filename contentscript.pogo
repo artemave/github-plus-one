@@ -17,7 +17,7 @@ if (path.match r/issues|pull\/\d+/)
     r = @new RegExp(current user)
 
     user comments = $('.comment[id|="issuecomment"]').filter
-      r.test($(this).find('a.comment-header-author').text())
+      r.test($(this).find('a.author').text())
 
     user comments.filter
       $(this).text().match r/\+\d/
@@ -40,7 +40,7 @@ if (path.match r/issues|pull\/\d+/)
     button.text "+#(number of votes + 1)"
     disable button()
 
-  $ 'h2.discussion-topic-title'.append(button)
+  $ '.gh-header-actions'.prepend(button)
 
   if (current user has already voted)
     disable button()
